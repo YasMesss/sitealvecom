@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" role="img" aria-label="Bouygues Telecom">
+  <g font-family="Inter, ui-sans-serif, system-ui, -apple-system, sans-serif" fill="#0a2b4f">
+    <text x="120" y="30" font-size="22" font-weight="800" letter-spacing="-0.02em" text-anchor="middle">Bouygues</text>
+    <text x="120" y="50" font-size="13" font-weight="500" letter-spacing="0.18em" text-anchor="middle" fill="#1e5ba8">TELECOM</text>
+  </g>
+</svg>

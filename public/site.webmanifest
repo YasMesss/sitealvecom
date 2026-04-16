@@ -1,0 +1,13 @@
+{
+  "name": "Alvecom",
+  "short_name": "Alvecom",
+  "description": "Alvecom — Expert Télécom et solutions informatiques pour entreprises.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0A2B4F",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
