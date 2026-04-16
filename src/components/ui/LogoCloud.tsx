@@ -25,9 +25,10 @@ export function LogoCloud({
             <Image
               src={logo.logo}
               alt={logo.name}
-              width={140}
+              width={144}
               height={36}
               className="h-9 w-auto opacity-60 grayscale transition duration-200 hover:opacity-100 hover:grayscale-0"
+              style={{ height: "auto" }}
             />
           </div>
         ))}

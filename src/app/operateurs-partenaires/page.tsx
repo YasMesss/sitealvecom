@@ -65,6 +65,7 @@ export default function Page() {
                     width={160}
                     height={40}
                     className="h-10 w-auto"
+                    style={{ height: "auto" }}
                   />
                 </div>
                 <div className="mt-3 text-xs font-semibold uppercase tracking-wider text-brand-500">
