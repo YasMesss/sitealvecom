@@ -15,7 +15,7 @@ export function LogoCloud({
   return (
     <div>
       <p className="text-center text-sm font-medium text-ink-500">{label}</p>
-      <div className="mt-6 grid grid-cols-2 items-center gap-x-8 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8">
+      <div className="mt-8 grid grid-cols-2 items-center gap-x-10 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8">
         {list.map((logo) => (
           <div
             key={logo.name}
@@ -25,9 +25,9 @@ export function LogoCloud({
             <Image
               src={logo.logo}
               alt={logo.name}
-              width={144}
-              height={36}
-              className="h-9 w-auto opacity-60 grayscale transition duration-200 hover:opacity-100 hover:grayscale-0"
+              width={160}
+              height={40}
+              className="h-10 w-auto opacity-70 grayscale transition duration-200 hover:opacity-100 hover:grayscale-0 md:h-11"
               style={{ height: "auto" }}
             />
           </div>

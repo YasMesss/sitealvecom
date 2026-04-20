@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import {
   Phone,
   Network,
@@ -11,14 +10,12 @@ import {
   ArrowRight,
   Clock,
   Users,
-  Building2,
-  Sparkles,
+  CheckCircle2,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { LinkButton } from "@/components/ui/Button";
 import { ServiceCard } from "@/components/ui/ServiceCard";
-import { Stats } from "@/components/ui/Stats";
 import { FeatureList } from "@/components/ui/FeatureList";
 import { CTASection } from "@/components/ui/CTASection";
 import { LogoCloud } from "@/components/ui/LogoCloud";
@@ -42,26 +39,31 @@ export default function HomePage() {
           fill
           priority
           sizes="100vw"
-          className="absolute inset-0 -z-10 object-cover opacity-30"
+          className="absolute inset-0 -z-10 object-cover"
           aria-hidden
         />
-        <div className="absolute inset-0 -z-10 bg-hero-gradient opacity-90" aria-hidden />
-        <div className="absolute inset-0 -z-10 bg-grid opacity-25" aria-hidden />
+        <div
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-900/95 via-brand-900/80 to-brand-900/30 md:from-brand-900/95 md:via-brand-900/70 md:to-transparent"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-y-0 right-0 -z-10 hidden w-1/2 bg-gradient-to-l from-brand-900/10 via-transparent to-transparent md:block"
+          aria-hidden
+        />
         <Container>
-          <div className="relative grid items-center gap-12 py-20 md:grid-cols-2 md:py-28">
-            <div>
+          <div className="relative grid items-center gap-10 py-20 md:grid-cols-[1.05fr_0.95fr] md:py-28 lg:gap-16">
+            <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-100 ring-1 ring-inset ring-white/15 backdrop-blur">
-                <Sparkles className="h-3.5 w-3.5" aria-hidden />
-                {siteConfig.stats.experienceYears} ans d&apos;expérience · {siteConfig.stats.clients}+ clients
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent-400" aria-hidden />
+                Intégrateur télécom &amp; IT depuis {siteConfig.stats.experienceYears} ans
               </div>
-              <h1 className="mt-5 text-4xl font-bold tracking-tight text-white text-balance md:text-5xl lg:text-6xl">
-                Votre expert Télécom<br />et solutions informatiques pour entreprises
+              <h1 className="mt-6 text-[2.4rem] font-bold leading-[1.05] tracking-tight text-white text-balance sm:text-5xl lg:text-6xl">
+                Télécom et IT, <span className="text-brand-200">réunis sous un seul partenaire</span>.
               </h1>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-brand-100 text-pretty">
-                Depuis plus de 18 ans, Alvecom accompagne les entreprises dans leurs
-                télécommunications, réseaux et services IT. Téléphonie, fibre, communications
-                unifiées, infogérance, cloud et sauvegarde — un seul partenaire, des solutions
-                fiables et évolutives.
+                Téléphonie, fibre, communications unifiées, cloud et infogérance : des solutions
+                fiables et évolutives pour les PME et ETI, pilotées par une équipe française
+                disponible.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <LinkButton href="/devis" variant="accent" size="lg">
@@ -77,39 +79,51 @@ export default function HomePage() {
                   {siteConfig.contact.phone}
                 </LinkButton>
               </div>
-              <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-brand-100">
+              <ul className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-brand-100">
                 <li className="inline-flex items-center gap-2">
-                  <ShieldCheck className="h-4 w-4 text-brand-300" aria-hidden />
-                  Opérateurs partenaires reconnus
+                  <CheckCircle2 className="h-4 w-4 text-accent-400" aria-hidden />
+                  {siteConfig.stats.clients}+ clients accompagnés
                 </li>
                 <li className="inline-flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-brand-300" aria-hidden />
-                  Support réactif {siteConfig.stats.sla}
+                  <CheckCircle2 className="h-4 w-4 text-accent-400" aria-hidden />
+                  Support {siteConfig.stats.sla}
                 </li>
                 <li className="inline-flex items-center gap-2">
-                  <Building2 className="h-4 w-4 text-brand-300" aria-hidden />
-                  PME, ETI, multi-sites
+                  <CheckCircle2 className="h-4 w-4 text-accent-400" aria-hidden />
+                  Équipe basée à Marseille
                 </li>
               </ul>
             </div>
 
-            <div className="relative">
-              <div className="relative rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow-[var(--shadow-lift)]">
-                <div className="grid grid-cols-2 gap-4">
-                  <HeroTile icon={Phone} title="Téléphonie VoIP" sub="3CX · Wildix · Teams" />
-                  <HeroTile icon={Network} title="Fibre & SD-WAN" sub="Multi-sites" />
-                  <HeroTile icon={MessagesSquare} title="Com. unifiées" sub="Chat · Visio · Mobile" />
-                  <HeroTile icon={Cloud} title="Cloud FR" sub="Hébergement souverain" />
-                </div>
-                <div className="mt-4 flex items-center justify-between rounded-2xl bg-white/10 p-4 ring-1 ring-inset ring-white/10">
-                  <div>
-                    <div className="text-xs uppercase tracking-wider text-brand-200">Audit offert</div>
-                    <div className="text-sm font-semibold text-white">Diagnostic télécom + IT</div>
+            <div className="relative hidden md:block">
+              <div className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-brand-500/25 via-brand-400/10 to-transparent blur-2xl" aria-hidden />
+              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow-[var(--shadow-lift)] lg:p-7">
+                <div className="flex items-center justify-between">
+                  <div className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-200">
+                    En un coup d&apos;œil
                   </div>
-                  <LinkButton href="/devis" variant="accent" size="sm">
-                    Réserver
-                  </LinkButton>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-500/15 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-accent-300 ring-1 ring-inset ring-accent-400/20">
+                    <span className="h-1.5 w-1.5 rounded-full bg-accent-400" aria-hidden />
+                    Audit offert
+                  </span>
                 </div>
+                <dl className="mt-6 grid grid-cols-3 gap-4">
+                  <HeroStat value={`${siteConfig.stats.experienceYears} ans`} label="Expérience" />
+                  <HeroStat value={`${siteConfig.stats.clients}+`} label="Clients" />
+                  <HeroStat value={siteConfig.stats.sla} label="Supervision" />
+                </dl>
+                <div className="mt-6 space-y-3 text-sm text-brand-100">
+                  <HeroBullet icon={Phone} label="Téléphonie VoIP — 3CX, Wildix, Teams" />
+                  <HeroBullet icon={Network} label="Fibre dédiée &amp; SD-WAN multi-sites" />
+                  <HeroBullet icon={MessagesSquare} label="Communications unifiées" />
+                  <HeroBullet icon={Cloud} label="Hébergement cloud souverain" />
+                  <HeroBullet icon={DatabaseBackup} label="Sauvegarde &amp; PRA" />
+                  <HeroBullet icon={Headset} label="Infogérance &amp; support 24/7" />
+                </div>
+                <LinkButton href="/devis" variant="accent" size="md" className="mt-6 w-full">
+                  Réserver mon audit
+                  <ArrowRight className="h-4 w-4" aria-hidden />
+                </LinkButton>
               </div>
             </div>
           </div>
@@ -231,51 +245,33 @@ export default function HomePage() {
         </ol>
       </Section>
 
-      {/* STATS BAND */}
-      <section className="relative overflow-hidden bg-brand-700 text-white">
-        <div className="absolute inset-0 bg-grid opacity-20" aria-hidden />
-        <Container>
-          <div className="relative py-14 md:py-20">
-            <Stats
-              invert
-              items={[
-                { value: `${siteConfig.stats.experienceYears} ans`, label: "D'expérience" },
-                { value: `${siteConfig.stats.clients}+`, label: "Clients accompagnés" },
-                { value: siteConfig.stats.sla, label: "Supervision" },
-                { value: `${siteConfig.stats.satisfaction}%`, label: "Clients satisfaits" },
-              ]}
-            />
-            <div className="mt-10 flex flex-wrap items-center gap-3">
-              <LinkButton href="/contact" variant="accent" size="lg">
-                Parler à un expert
-              </LinkButton>
-              <Link href="/ressources/faq" className="text-sm font-semibold text-brand-100 hover:text-white">
-                Consulter la FAQ →
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </section>
-
       <CTASection />
     </>
   );
 }
 
-function HeroTile({
+function HeroStat({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="rounded-2xl bg-white/5 p-3 ring-1 ring-inset ring-white/10">
+      <dt className="text-[11px] font-medium uppercase tracking-wider text-brand-200">{label}</dt>
+      <dd className="mt-1 text-xl font-bold text-white">{value}</dd>
+    </div>
+  );
+}
+
+function HeroBullet({
   icon: Icon,
-  title,
-  sub,
+  label,
 }: {
   icon: React.ComponentType<{ className?: string }>;
-  title: string;
-  sub: string;
+  label: string;
 }) {
   return (
-    <div className="rounded-2xl bg-white/8 p-4 ring-1 ring-inset ring-white/10 backdrop-blur">
-      <Icon className="h-5 w-5 text-brand-300" aria-hidden />
-      <div className="mt-3 text-sm font-semibold text-white">{title}</div>
-      <div className="text-xs text-brand-100">{sub}</div>
+    <div className="flex items-center gap-3">
+      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-brand-200 ring-1 ring-inset ring-white/10">
+        <Icon className="h-4 w-4" aria-hidden />
+      </span>
+      <span>{label}</span>
     </div>
   );
 }

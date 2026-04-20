@@ -42,10 +42,10 @@ export function Navbar() {
           : "border-b border-transparent bg-white"
       )}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-5 md:h-18 lg:px-8">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-5 md:h-18 lg:gap-6 lg:px-8">
         <Logo />
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Navigation principale">
+        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Navigation principale">
           {mainNav.map((item) => (
             <NavItem key={item.href} item={item} pathname={pathname} />
           ))}
@@ -54,13 +54,21 @@ export function Navbar() {
         <div className="hidden items-center gap-3 lg:flex">
           <a
             href={`tel:${siteConfig.contact.phoneE164}`}
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 hover:text-brand-500"
+            className="hidden items-center gap-1.5 whitespace-nowrap text-sm font-semibold text-brand-700 hover:text-brand-500 xl:inline-flex"
             data-event="nav_phone_click"
           >
             <Phone className="h-4 w-4" aria-hidden />
             {siteConfig.contact.phone}
           </a>
-          <LinkButton href="/devis" variant="accent" size="md">
+          <a
+            href={`tel:${siteConfig.contact.phoneE164}`}
+            aria-label={`Nous appeler au ${siteConfig.contact.phone}`}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-brand-700 ring-1 ring-inset ring-ink-200 hover:bg-brand-50 xl:hidden"
+            data-event="nav_phone_click"
+          >
+            <Phone className="h-4 w-4" aria-hidden />
+          </a>
+          <LinkButton href="/devis" variant="accent" size="md" className="whitespace-nowrap">
             Demander un devis
           </LinkButton>
         </div>
@@ -108,7 +116,7 @@ function NavItem({ item, pathname }: { item: NavLink; pathname: string }) {
       <Link
         href={item.href}
         className={cn(
-          "rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-brand-50 hover:text-brand-700",
+          "whitespace-nowrap rounded-lg px-2.5 py-2 text-sm font-medium transition-colors hover:bg-brand-50 hover:text-brand-700",
           active ? "text-brand-700" : "text-ink-700"
         )}
       >
@@ -121,7 +129,7 @@ function NavItem({ item, pathname }: { item: NavLink; pathname: string }) {
       <button
         type="button"
         className={cn(
-          "inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-brand-50 hover:text-brand-700",
+          "inline-flex items-center gap-1 whitespace-nowrap rounded-lg px-2.5 py-2 text-sm font-medium transition-colors hover:bg-brand-50 hover:text-brand-700",
           active ? "text-brand-700" : "text-ink-700"
         )}
         aria-haspopup="menu"

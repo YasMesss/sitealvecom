@@ -50,7 +50,7 @@ export const mainNav: NavLink[] = [
   },
   {
     href: "/operateurs-partenaires",
-    label: "Opérateurs & Partenaires",
+    label: "Partenaires",
   },
   {
     href: "/ressources",
