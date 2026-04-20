@@ -14,21 +14,22 @@ export function LogoCloud({
   const list = items ?? defaultPartners;
   return (
     <div>
-      <p className="text-center text-sm font-medium text-ink-500">{label}</p>
-      <div className="mt-8 grid grid-cols-2 items-center gap-x-10 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8">
+      <p className="text-center text-xs font-semibold uppercase tracking-[0.18em] text-ink-500">
+        {label}
+      </p>
+      <div className="mt-10 grid grid-cols-2 items-center gap-x-10 gap-y-10 sm:grid-cols-4 lg:grid-cols-4 xl:grid-cols-8">
         {list.map((logo) => (
           <div
             key={logo.name}
-            className="flex items-center justify-center px-2"
+            className="relative flex h-14 w-full items-center justify-center"
             title={logo.name}
           >
             <Image
               src={logo.logo}
               alt={logo.name}
-              width={160}
-              height={40}
-              className="h-10 w-auto opacity-70 grayscale transition duration-200 hover:opacity-100 hover:grayscale-0 md:h-11"
-              style={{ height: "auto" }}
+              fill
+              sizes="(max-width: 640px) 45vw, (max-width: 1024px) 22vw, 12vw"
+              className="object-contain opacity-70 grayscale transition duration-200 hover:opacity-100 hover:grayscale-0"
             />
           </div>
         ))}

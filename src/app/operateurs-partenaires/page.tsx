@@ -58,15 +58,16 @@ export default function Page() {
                 {...linkProps}
                 className="group flex flex-col rounded-2xl border border-ink-200 bg-white p-6 shadow-[var(--shadow-soft)] transition-all hover:border-brand-300 hover:shadow-[var(--shadow-lift)]"
               >
-                <div className="flex h-14 items-center">
-                  <Image
-                    src={p.logo}
-                    alt={p.name}
-                    width={160}
-                    height={40}
-                    className="h-10 w-auto"
-                    style={{ height: "auto" }}
-                  />
+                <div className="relative flex h-14 w-full items-center justify-start">
+                  <div className="relative h-10 w-48">
+                    <Image
+                      src={p.logo}
+                      alt={p.name}
+                      fill
+                      sizes="192px"
+                      className="object-contain object-left"
+                    />
+                  </div>
                 </div>
                 <div className="mt-3 text-xs font-semibold uppercase tracking-wider text-brand-500">
                   {p.role}

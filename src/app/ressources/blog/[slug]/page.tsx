@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
@@ -71,6 +72,23 @@ export default async function Page({ params }: { params: Promise<Params> }) {
           <span>{post.readingMinutes} min de lecture</span>
         </div>
       </PageHeader>
+
+      {post.cover && (
+        <Container>
+          <div className="-mt-2 pb-2 md:pb-4">
+            <div className="relative aspect-[21/9] w-full overflow-hidden rounded-3xl bg-[var(--color-muted)]">
+              <Image
+                src={post.cover}
+                alt=""
+                fill
+                sizes="(max-width: 1280px) 100vw, 1280px"
+                priority
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </Container>
+      )}
 
       <section className="py-12 md:py-16">
         <Container size="narrow">
