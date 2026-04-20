@@ -129,8 +129,14 @@ export function ContactForm({ defaultSubject = "" }: { defaultSubject?: string }
       </label>
       {errors.consent && <p className="text-xs text-danger">{errors.consent[0]}</p>}
 
-      <div className="flex items-center gap-4">
-        <Button type="submit" variant="accent" size="lg" disabled={state === "submitting"}>
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+        <Button
+          type="submit"
+          variant="accent"
+          size="lg"
+          disabled={state === "submitting"}
+          className="w-full sm:w-auto"
+        >
           {state === "submitting" ? (
             <>
               <Loader2 className="h-4 w-4 animate-spin" /> Envoi…

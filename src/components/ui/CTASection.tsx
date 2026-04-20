@@ -38,14 +38,23 @@ export function CTASection({
               {title}
             </h2>
             <p className="mt-4 text-lg text-brand-100 text-pretty">{description}</p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <LinkButton href={primaryHref} variant="accent" size="lg">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
+              <LinkButton href={primaryHref} variant="accent" size="lg" className="w-full sm:w-auto">
                 <Calendar className="h-4 w-4" aria-hidden />
                 {primaryLabel}
               </LinkButton>
-              <LinkButton href={`tel:${siteConfig.contact.phoneE164}`} variant="secondary" size="lg">
+              <LinkButton
+                href={`tel:${siteConfig.contact.phoneE164}`}
+                variant="secondary"
+                size="lg"
+                className="w-full sm:w-auto"
+              >
                 <Phone className="h-4 w-4" aria-hidden />
-                {secondaryLabel} — {siteConfig.contact.phone}
+                <span className="inline-flex flex-wrap items-center justify-center gap-x-1">
+                  <span>{secondaryLabel}</span>
+                  <span className="hidden sm:inline">—</span>
+                  <span>{siteConfig.contact.phone}</span>
+                </span>
               </LinkButton>
             </div>
             <p className="mt-6 inline-flex items-center gap-2 text-sm text-brand-100">

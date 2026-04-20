@@ -76,7 +76,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
       {post.cover && (
         <Container>
           <div className="-mt-2 pb-2 md:pb-4">
-            <div className="relative aspect-[21/9] w-full overflow-hidden rounded-3xl bg-[var(--color-muted)]">
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-[var(--color-muted)] sm:rounded-3xl md:aspect-[21/9]">
               <Image
                 src={post.cover}
                 alt=""

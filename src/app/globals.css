@@ -128,4 +128,24 @@
   .prose-brand a:hover { color: var(--color-brand-600); }
   .prose-brand code { background: var(--color-muted); padding: 0.1rem 0.35rem; border-radius: 0.25rem; font-size: 0.92em; }
   .prose-brand blockquote { border-left: 3px solid var(--color-brand-400); padding-left: 1rem; color: var(--color-ink-600); font-style: italic; margin: 1rem 0; }
+  .prose-brand img { max-width: 100%; height: auto; border-radius: 0.75rem; margin: 1.5rem 0; }
+  .prose-brand pre { overflow-x: auto; background: var(--color-brand-900); color: #e0e7ff; padding: 1rem; border-radius: 0.75rem; margin: 1rem 0; font-size: 0.85rem; line-height: 1.5; }
+  .prose-brand pre code { background: transparent; padding: 0; color: inherit; }
+
+  .prose-brand table {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin: 1.25rem 0;
+    border: 1px solid var(--color-ink-200);
+    border-radius: 0.75rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .prose-brand thead { background: var(--color-muted); }
+  .prose-brand th, .prose-brand td { padding: 0.6rem 0.85rem; text-align: left; border-bottom: 1px solid var(--color-ink-200); vertical-align: top; }
+  .prose-brand th { font-weight: 600; color: var(--color-brand-700); white-space: nowrap; }
+  .prose-brand tbody tr:last-child td { border-bottom: 0; }
 }

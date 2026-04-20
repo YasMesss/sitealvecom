@@ -47,22 +47,22 @@ export default function HomePage() {
           aria-hidden
         />
         <Container>
-          <div className="relative grid items-center gap-10 py-20 md:grid-cols-[1.05fr_0.95fr] md:py-28 lg:gap-16">
+          <div className="relative grid items-center gap-10 py-14 sm:py-20 md:grid-cols-[1.05fr_0.95fr] md:py-28 lg:gap-16">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-100 ring-1 ring-inset ring-white/15 backdrop-blur">
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent-400" aria-hidden />
                 Intégrateur télécom &amp; IT depuis {siteConfig.stats.experienceYears} ans
               </div>
-              <h1 className="mt-6 text-[2.4rem] font-bold leading-[1.05] tracking-tight text-white text-balance sm:text-5xl lg:text-6xl">
+              <h1 className="mt-6 text-4xl font-bold leading-[1.1] tracking-tight text-white text-balance sm:text-5xl lg:text-6xl">
                 Télécom et IT, <span className="text-brand-200">réunis sous un seul partenaire</span>.
               </h1>
-              <p className="mt-5 max-w-xl text-lg leading-relaxed text-brand-100 text-pretty">
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-brand-100 text-pretty sm:text-lg">
                 Téléphonie, fibre, communications unifiées, cloud et infogérance : des solutions
                 fiables et évolutives pour les PME et ETI, pilotées par une équipe française
                 disponible.
               </p>
-              <div className="mt-8 flex flex-wrap items-center gap-3">
-                <LinkButton href="/devis" variant="accent" size="lg">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+                <LinkButton href="/devis" variant="accent" size="lg" className="w-full sm:w-auto">
                   Demander un audit gratuit
                   <ArrowRight className="h-4 w-4" aria-hidden />
                 </LinkButton>
@@ -70,6 +70,7 @@ export default function HomePage() {
                   href={`tel:${siteConfig.contact.phoneE164}`}
                   variant="secondary"
                   size="lg"
+                  className="w-full sm:w-auto"
                 >
                   <Phone className="h-4 w-4" aria-hidden />
                   {siteConfig.contact.phone}

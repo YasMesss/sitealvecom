@@ -162,7 +162,7 @@ export function DevisForm() {
   }
 
   return (
-    <div className="rounded-2xl border border-ink-200 bg-white p-6 shadow-[var(--shadow-soft)] md:p-8">
+    <div className="rounded-2xl border border-ink-200 bg-white p-4 shadow-[var(--shadow-soft)] sm:p-6 md:p-8">
       <Stepper step={step} />
 
       {/* honeypot */}
@@ -357,16 +357,16 @@ export function DevisForm() {
         </div>
       )}
 
-      <div className="mt-8 flex items-center justify-between gap-3">
+      <div className="mt-8 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
         {step > 1 ? (
-          <Button variant="ghost" onClick={prev}>
+          <Button variant="ghost" onClick={prev} className="w-full sm:w-auto">
             <ArrowLeft className="h-4 w-4" /> Précédent
           </Button>
         ) : (
-          <span />
+          <span className="hidden sm:block" />
         )}
         {step < 3 ? (
-          <Button variant="accent" size="lg" onClick={next}>
+          <Button variant="accent" size="lg" onClick={next} className="w-full sm:w-auto">
             Continuer <ArrowRight className="h-4 w-4" />
           </Button>
         ) : (
@@ -375,6 +375,7 @@ export function DevisForm() {
             size="lg"
             onClick={submit}
             disabled={status === "submitting" || !data.consent}
+            className="w-full sm:w-auto"
           >
             {status === "submitting" ? (
               <>
@@ -396,45 +397,73 @@ export function DevisForm() {
 }
 
 function Stepper({ step }: { step: number }) {
+  const steps = [
+    { n: 1, t: "Besoins" },
+    { n: 2, t: "Contexte" },
+    { n: 3, t: "Coordonnées" },
+  ];
+  const current = steps.find((s) => s.n === step);
   return (
-    <ol className="mb-8 grid grid-cols-3 gap-2">
-      {[
-        { n: 1, t: "Besoins" },
-        { n: 2, t: "Contexte" },
-        { n: 3, t: "Coordonnées" },
-      ].map((s) => {
-        const active = s.n === step;
-        const done = s.n < step;
-        return (
-          <li key={s.n}>
-            <div
+    <>
+      <div className="mb-6 flex items-center justify-between gap-3 sm:hidden">
+        <div>
+          <div className="text-xs font-semibold uppercase tracking-wider text-brand-500">
+            Étape {step} sur {steps.length}
+          </div>
+          <div className="mt-1 text-base font-bold text-brand-700">{current?.t}</div>
+        </div>
+        <div className="flex items-center gap-1.5" aria-hidden>
+          {steps.map((s) => (
+            <span
+              key={s.n}
               className={cn(
-                "flex items-center gap-3 rounded-xl border p-3 text-sm font-medium",
-                active
-                  ? "border-brand-500 bg-brand-50 text-brand-700"
-                  : done
-                  ? "border-brand-200 bg-white text-brand-600"
-                  : "border-ink-200 bg-white text-ink-500"
+                "h-2 rounded-full transition-all",
+                s.n === step
+                  ? "w-6 bg-brand-500"
+                  : s.n < step
+                  ? "w-2 bg-brand-400"
+                  : "w-2 bg-ink-200"
               )}
-            >
-              <span
+            />
+          ))}
+        </div>
+      </div>
+
+      <ol className="mb-8 hidden grid-cols-3 gap-2 sm:grid">
+        {steps.map((s) => {
+          const active = s.n === step;
+          const done = s.n < step;
+          return (
+            <li key={s.n}>
+              <div
                 className={cn(
-                  "inline-flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold",
+                  "flex items-center gap-3 rounded-xl border p-3 text-sm font-medium",
                   active
-                    ? "bg-brand-500 text-white"
+                    ? "border-brand-500 bg-brand-50 text-brand-700"
                     : done
-                    ? "bg-brand-100 text-brand-700"
-                    : "bg-ink-100 text-ink-500"
+                    ? "border-brand-200 bg-white text-brand-600"
+                    : "border-ink-200 bg-white text-ink-500"
                 )}
               >
-                {s.n}
-              </span>
-              <span>{s.t}</span>
-            </div>
-          </li>
-        );
-      })}
-    </ol>
+                <span
+                  className={cn(
+                    "inline-flex h-7 w-7 flex-none items-center justify-center rounded-full text-xs font-bold",
+                    active
+                      ? "bg-brand-500 text-white"
+                      : done
+                      ? "bg-brand-100 text-brand-700"
+                      : "bg-ink-100 text-ink-500"
+                  )}
+                >
+                  {s.n}
+                </span>
+                <span>{s.t}</span>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </>
   );
 }
 

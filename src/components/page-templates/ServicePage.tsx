@@ -59,12 +59,21 @@ export function ServicePage(props: ServicePageProps) {
         description={props.description}
         breadcrumbs={props.breadcrumbs}
       >
-        <div className="mt-6 flex flex-wrap gap-3">
-          <LinkButton href="/devis" variant="accent" size="lg">
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <LinkButton href="/devis" variant="accent" size="lg" className="w-full sm:w-auto">
             Demander un devis <ArrowRight className="h-4 w-4" />
           </LinkButton>
-          <LinkButton href={`tel:${siteConfig.contact.phoneE164}`} variant="outline" size="lg">
-            Parler à un expert — {siteConfig.contact.phone}
+          <LinkButton
+            href={`tel:${siteConfig.contact.phoneE164}`}
+            variant="outline"
+            size="lg"
+            className="w-full sm:w-auto"
+          >
+            <span className="inline-flex flex-wrap items-center justify-center gap-x-1">
+              <span>Parler à un expert</span>
+              <span className="hidden sm:inline">—</span>
+              <span>{siteConfig.contact.phone}</span>
+            </span>
           </LinkButton>
         </div>
       </PageHeader>

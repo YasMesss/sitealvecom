@@ -42,7 +42,7 @@ export function Navbar() {
           : "border-b border-transparent bg-white"
       )}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-5 md:h-18 lg:gap-6 lg:px-8">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:gap-4 sm:px-5 md:h-20 lg:gap-6 lg:px-8">
         <Logo />
 
         <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Navigation principale">
@@ -78,6 +78,7 @@ export function Navbar() {
           onClick={() => setOpen((s) => !s)}
           aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
           aria-expanded={open}
+          aria-controls="mobile-menu"
           className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-brand-700 ring-1 ring-inset ring-ink-200 hover:bg-brand-50 lg:hidden"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -85,25 +86,37 @@ export function Navbar() {
       </div>
 
       {open && (
-        <div className="fixed inset-x-0 top-16 z-40 h-[calc(100dvh-4rem)] overflow-y-auto bg-white lg:hidden">
-          <nav className="flex flex-col gap-1 px-5 py-6" aria-label="Navigation mobile">
-            {mainNav.map((item) => (
-              <MobileNavItem key={item.href} item={item} pathname={pathname} />
-            ))}
-            <div className="mt-4 flex flex-col gap-2 border-t border-ink-200 pt-4">
-              <LinkButton href="/devis" variant="accent" size="lg">
-                Demander un devis
-              </LinkButton>
-              <LinkButton
-                href={`tel:${siteConfig.contact.phoneE164}`}
-                variant="outline"
-                size="lg"
-              >
-                <Phone className="h-4 w-4" aria-hidden /> {siteConfig.contact.phone}
-              </LinkButton>
-            </div>
-          </nav>
-        </div>
+        <>
+          <button
+            type="button"
+            aria-label="Fermer le menu"
+            onClick={() => setOpen(false)}
+            className="fixed inset-x-0 bottom-0 top-16 z-30 bg-ink-900/40 backdrop-blur-sm lg:hidden"
+          />
+          <div
+            id="mobile-menu"
+            className="fixed inset-x-0 top-16 z-40 max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-ink-200 bg-white shadow-[var(--shadow-lift)] lg:hidden"
+          >
+            <nav className="flex flex-col gap-1 px-4 py-5 sm:px-5 sm:py-6" aria-label="Navigation mobile">
+              {mainNav.map((item) => (
+                <MobileNavItem key={item.href} item={item} pathname={pathname} />
+              ))}
+              <div className="mt-4 flex flex-col gap-2 border-t border-ink-200 pt-4">
+                <LinkButton href="/devis" variant="accent" size="lg" className="w-full">
+                  Demander un devis
+                </LinkButton>
+                <LinkButton
+                  href={`tel:${siteConfig.contact.phoneE164}`}
+                  variant="outline"
+                  size="lg"
+                  className="w-full"
+                >
+                  <Phone className="h-4 w-4" aria-hidden /> {siteConfig.contact.phone}
+                </LinkButton>
+              </div>
+            </nav>
+          </div>
+        </>
       )}
     </header>
   );
