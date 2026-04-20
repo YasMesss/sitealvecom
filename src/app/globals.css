@@ -98,6 +98,23 @@
       linear-gradient(180deg, #061936 0%, #0a2b4f 100%);
   }
 
+  .bg-hero-mesh {
+    background:
+      radial-gradient(ellipse 70% 55% at 85% 10%, rgba(78, 143, 209, 0.45), transparent 65%),
+      radial-gradient(ellipse 55% 45% at 15% 85%, rgba(22, 70, 131, 0.55), transparent 65%),
+      radial-gradient(ellipse 40% 35% at 50% 50%, rgba(30, 91, 168, 0.18), transparent 70%),
+      linear-gradient(160deg, #030b1c 0%, #061936 42%, #0a2b4f 100%);
+  }
+
+  .bg-hero-dots {
+    background-image:
+      radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+    background-size: 28px 28px;
+    background-position: 0 0;
+    mask-image: radial-gradient(ellipse 85% 75% at 50% 40%, black 40%, transparent 85%);
+    -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 40%, black 40%, transparent 85%);
+  }
+
   .prose-brand {
     color: var(--color-ink-700);
     line-height: 1.7;

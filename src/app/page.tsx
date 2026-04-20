@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   Phone,
   Network,
@@ -33,21 +32,18 @@ export default function HomePage() {
     <>
       {/* HERO */}
       <section className="relative isolate overflow-hidden bg-brand-900 text-white">
-        <Image
-          src="/images/hero/hero-home.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="absolute inset-0 -z-10 object-cover"
+        <div className="absolute inset-0 -z-10 bg-hero-mesh" aria-hidden />
+        <div className="absolute inset-0 -z-10 bg-hero-dots opacity-[0.22]" aria-hidden />
+        <div
+          className="absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent"
           aria-hidden
         />
         <div
-          className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-900/95 via-brand-900/80 to-brand-900/30 md:from-brand-900/95 md:via-brand-900/70 md:to-transparent"
+          className="pointer-events-none absolute -right-40 -top-40 -z-10 h-[520px] w-[520px] rounded-full bg-brand-500/25 blur-3xl"
           aria-hidden
         />
         <div
-          className="absolute inset-y-0 right-0 -z-10 hidden w-1/2 bg-gradient-to-l from-brand-900/10 via-transparent to-transparent md:block"
+          className="pointer-events-none absolute -bottom-48 -left-32 -z-10 h-[480px] w-[480px] rounded-full bg-accent-500/10 blur-3xl"
           aria-hidden
         />
         <Container>
